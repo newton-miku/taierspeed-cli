@@ -2,8 +2,6 @@ name: Build for aarch64
 
 on:
   push:
-    branches:
-      - main  # 可以根据您的需求进行更改
 
 jobs:
   build:
