@@ -7,7 +7,6 @@ OUT_DIR="${CURRENT_DIR}/out"
 PROGNAME="taierspeed-cli"
 BINARY="${PROGNAME}-$(go env GOOS)-aarch64"
 BUILD_DATE=$(date -u "+%Y-%m-%d %H:%M:%S %Z")
-LDFLAGS="-w -s -X github.com/ztelliot/taierspeed-cli/defs.ProgName=${PROGNAME} -X github.com/ztelliot/taierspeed-cli/defs.ProgVersion=${PROGVER} -X github.com/ztelliot/taierspeed-cli/defs.BuildDate=${BUILD_DATE}"
 
 # Create the output directory if it doesn't exist
 if [[ ! -d ${OUT_DIR} ]]; then
@@ -20,8 +19,6 @@ if [[ -e ${OUT_DIR}/${BINARY} ]]; then
 fi
 
 # Build the binary for aarch64
-GOARCH=arm64 GOOS=linux go build -o "${OUT_DIR}/${BINARY}" -ldflags "${LDFLAGS}" -trimpath main.go
-
-# No UPX compression needed for aarch64
+GOARCH=arm64 GOOS=linux go build -o "${OUT_DIR}/${BINARY}" -a main.go
 
 echo "Build completed for aarch64: ${OUT_DIR}/${BINARY}"
