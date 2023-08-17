@@ -27,8 +27,7 @@ jobs:
         rm -rf upx-3.96-amd64_linux*
 
     - name: Build for aarch64
-      run: |
-        ./buildARM.sh
+      run: ./buildARM.sh
 
     # 您可以在此处添加其他需要的步骤，例如测试、部署等
 
